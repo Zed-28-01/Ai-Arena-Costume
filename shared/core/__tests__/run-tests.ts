@@ -1,4 +1,4 @@
-import testCases from './bo-phoi-thu.json';
+import testCases from './bo-phoi-thu.json' with { type: 'json' };
 import { danhGia, type KetQuaDanhGia } from '../engine.ts';
 import type { ThamMyLevel } from '../score.ts';
 

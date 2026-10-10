@@ -2,6 +2,7 @@ import express, { type Request, type Response } from 'express';
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { handleEvaluate } from './server/evaluate.ts';
 
 dotenv.config();
 
@@ -10,7 +11,7 @@ const rootDir = fileURLToPath(new URL('.', import.meta.url));
 
 async function startServer() {
   const app = express();
-  const PORT = 3000;
+  const PORT = Number(process.env.PORT) || 3000;
   const isProd = process.env.NODE_ENV === 'production';
 
   app.use(express.json());
@@ -20,6 +21,9 @@ async function startServer() {
     const hasKey = Boolean(process.env.GEMINI_API_KEY && process.env.GEMINI_API_KEY.trim() !== '');
     res.json({ ok: true, hasKey });
   });
+
+  // Endpoint đánh giá trang phục (G2.1)
+  app.post('/api/evaluate', handleEvaluate);
 
   if (!isProd) {
     // Chế độ phát triển: tích hợp Vite middleware

@@ -9,13 +9,16 @@ import {
   getPresetById,
   getAppConfig,
   getRuleById,
+  getGeminiConfig,
 } from '../shared/core/dataLoader.ts';
 import { danhGia } from '../shared/core/engine.ts';
 import type { ItemLayer, ClothingItem } from '../shared/core/types.ts';
+import type { EvaluationResponse } from '../server/cache.ts';
 import { Mannequin } from './components/Mannequin.tsx';
 import { GenderScreen } from './components/GenderScreen.tsx';
 import { EventScreen } from './components/EventScreen.tsx';
 import { ItemDetailModal } from './components/ItemDetailModal.tsx';
+import { EvaluationScreen } from './components/EvaluationScreen.tsx';
 import {
   RefreshCw,
   Download,
@@ -25,6 +28,8 @@ import {
   AlertTriangle,
   Info as InfoIcon,
   CheckCircle2,
+  Sparkles,
+  Loader2,
 } from 'lucide-react';
 
 const TAB_CONFIG: { key: ItemLayer; label: string }[] = [
@@ -35,7 +40,7 @@ const TAB_CONFIG: { key: ItemLayer; label: string }[] = [
   { key: 'phu_kien', label: 'Phụ kiện' },
 ];
 
-type AppStep = 'gender' | 'event' | 'remix';
+type AppStep = 'gender' | 'event' | 'remix' | 'evaluation';
 
 // Nạp bộ đồ từ preset chuẩn của sự kiện
 function loadOutfitFromPreset(eventId: string): Record<ItemLayer, string | null> {
@@ -90,7 +95,12 @@ export default function App() {
 
   const [activeTab, setActiveTab] = useState<ItemLayer>('ao');
   const [isExporting, setIsExporting] = useState(false);
+  const [isEvaluating, setIsEvaluating] = useState(false);
   const [selectedItemForModal, setSelectedItemForModal] = useState<ClothingItem | null>(null);
+
+  // Kết quả đánh giá cho màn Evaluation
+  const [evaluationData, setEvaluationData] = useState<EvaluationResponse | null>(null);
+  const [isClientFallback, setIsClientFallback] = useState(false);
 
   // Sự kiện hiện tại
   const currentEvent = getEventById(eventId) || getEvents()[0];
@@ -204,10 +214,85 @@ export default function App() {
   const wearingItemsList = Object.values(currentOutfit).filter(Boolean) as string[];
   const itemsInCurrentTab = getItemsByLayer(activeTab);
 
-  // GỌI LÕI LUẬT (Task G1.2): chạy trực tiếp danhGia từ shared/core/engine.ts
+  // GỌI LÕI LUẬT PHẢN HỒI TỨC THÌ (G1.2)
   const danhGiaResult = danhGia(eventId, wearingItemsList, 'on');
-  // Điểm tạm = điểm văn hóa + điểm sự kiện (chưa gồm thẩm mỹ)
   const diemTam = danhGiaResult.diem_van_hoa + danhGiaResult.diem_su_kien;
+
+  // 8. Chuyển sang màn Đánh giá (Task G2.1 + G2.3)
+  const handleGoToEvaluation = async () => {
+    setIsEvaluating(true);
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 12000); // Timeout 12 giây
+
+    try {
+      const res = await fetch('/api/evaluate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          event_id: eventId,
+          gender,
+          items: wearingItemsList,
+        }),
+        signal: controller.signal,
+      });
+
+      clearTimeout(timeoutId);
+
+      if (!res.ok) {
+        throw new Error(`Server returned status ${res.status}`);
+      }
+
+      const data: EvaluationResponse = await res.json();
+      setEvaluationData(data);
+      setIsClientFallback(false);
+      setStep('evaluation');
+    } catch (err) {
+      console.warn('Lỗi kết nối máy chủ hoặc quá 12 giây, chuyển sang dự phòng client:', err);
+      // Dự phòng phía client: tự tính bằng danhGia(..., 'du_phong')
+      const fallbackResult = danhGia(eventId, wearingItemsList, 'du_phong');
+      const geminiConfig = getGeminiConfig();
+
+      let fallbackFeedback = geminiConfig.fallback_feedback.chuan_le;
+      if (fallbackResult.isTaboo) {
+        fallbackFeedback = geminiConfig.fallback_feedback.co_taboo;
+      } else if (fallbackResult.so_mon_hien_dai > 0) {
+        fallbackFeedback = geminiConfig.fallback_feedback.co_mon_hien_dai;
+      }
+
+      const fallbackData: EvaluationResponse = {
+        tongDiem: fallbackResult.tong_diem,
+        nhan: fallbackResult.nhan,
+        diem: {
+          vanHoa: fallbackResult.diem_van_hoa,
+          suKien: fallbackResult.diem_su_kien,
+          thamMy: fallbackResult.diem_tham_my,
+        },
+        isTaboo: fallbackResult.isTaboo,
+        cultureMeter: fallbackResult.culture_meter,
+        soMonHienDai: fallbackResult.so_mon_hien_dai,
+        canhBao: fallbackResult.luat_kich_hoat.map((ruleId) => {
+          const r = getRuleById(ruleId);
+          return {
+            rule_id: ruleId,
+            loai: r?.loai || '',
+            tieu_de: r?.tieu_de || '',
+            ly_do: r?.ly_do || '',
+            da_duyet: r?.da_duyet ?? false,
+            nguon_ids: r?.nguon_ids || [],
+          };
+        }),
+        feedback: fallbackFeedback,
+        can_cu_ids: [],
+        tamTinh: true,
+      };
+
+      setEvaluationData(fallbackData);
+      setIsClientFallback(true);
+      setStep('evaluation');
+    } finally {
+      setIsEvaluating(false);
+    }
+  };
 
   // Điều hướng màn hình
   if (step === 'gender') {
@@ -225,6 +310,21 @@ export default function App() {
     );
   }
 
+  if (step === 'evaluation' && evaluationData) {
+    return (
+      <EvaluationScreen
+        evaluation={evaluationData}
+        isClientFallback={isClientFallback}
+        onBackToRemix={() => setStep('remix')}
+        wearingItemsList={wearingItemsList}
+        gender={gender}
+        currentEvent={currentEvent}
+        selectedShirtName={selectedShirt?.ten}
+      />
+    );
+  }
+
+  // Màn hình Remix
   return (
     <div className="min-h-screen bg-stone-100 text-stone-900 font-sans flex flex-col justify-between">
       {/* Header động */}
@@ -236,7 +336,7 @@ export default function App() {
               Việt phục Remix
             </span>
             <span className="text-[11px] bg-stone-100 text-stone-600 px-2 py-0.5 rounded-full border border-stone-200">
-              G1.2 + G1.3
+              G2.1 + G2.3
             </span>
           </div>
 
@@ -272,7 +372,7 @@ export default function App() {
 
       {/* Main Content */}
       <main className="max-w-6xl w-full mx-auto p-4 sm:p-6 lg:p-8 flex-1 flex flex-col lg:flex-row gap-6 lg:gap-8 items-start">
-        {/* Cột trái: Vùng Mannequin & Thử nghiệm xuất ảnh */}
+        {/* Cột trái: Vùng Mannequin & Các nút hành động */}
         <section className="w-full lg:w-5/12 flex flex-col items-center justify-center">
           <div
             ref={captureRef}
@@ -290,15 +390,37 @@ export default function App() {
             </div>
           </div>
 
-          <div className="mt-3.5 w-full max-w-[340px] flex items-center justify-center">
+          {/* Các nút hành động */}
+          <div className="mt-3.5 w-full max-w-[340px] flex flex-col gap-2">
+            {/* Nút Xem đánh giá (G2.1 + G2.3) */}
+            <button
+              type="button"
+              onClick={handleGoToEvaluation}
+              disabled={isEvaluating}
+              className="w-full py-3 px-4 rounded-2xl text-xs font-bold bg-amber-700 hover:bg-amber-800 text-white active:scale-98 transition-all shadow-md flex items-center justify-center space-x-2 disabled:opacity-60 cursor-pointer"
+            >
+              {isEvaluating ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  <span>Đang thẩm định kết quả...</span>
+                </>
+              ) : (
+                <>
+                  <Sparkles className="w-4 h-4 text-amber-200" />
+                  <span>Xem đánh giá & Thẩm định</span>
+                </>
+              )}
+            </button>
+
+            {/* Nút Thử nghiệm xuất ảnh (G0.6) */}
             <button
               type="button"
               onClick={handleExportImage}
               disabled={isExporting}
-              className="w-full py-2.5 px-4 rounded-xl text-xs font-semibold bg-stone-900 text-white hover:bg-stone-800 active:scale-95 transition-all shadow-sm flex items-center justify-center space-x-2 disabled:opacity-50"
+              className="w-full py-2 px-4 rounded-xl text-xs font-semibold bg-white border border-stone-200 text-stone-700 hover:bg-stone-50 transition-all flex items-center justify-center space-x-1.5 disabled:opacity-50"
             >
-              <Download className="w-3.5 h-3.5" />
-              <span>{isExporting ? 'Đang xuất ảnh test...' : 'Thử nghiệm xuất ảnh (G0.6)'}</span>
+              <Download className="w-3.5 h-3.5 text-stone-400" />
+              <span>{isExporting ? 'Đang xuất ảnh...' : 'Thử tải ảnh thẻ (G0.6)'}</span>
             </button>
           </div>
         </section>
@@ -322,7 +444,7 @@ export default function App() {
               </span>
             </div>
 
-            {/* CULTURE METER (Chỉ báo trực quan 3 mức) */}
+            {/* CULTURE METER */}
             <div className="p-3.5 bg-stone-50 rounded-2xl border border-stone-200/80">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-xs font-bold uppercase tracking-wider text-stone-500">
@@ -333,7 +455,6 @@ export default function App() {
                 </span>
               </div>
 
-              {/* 3 phân đoạn trực quan */}
               <div className="grid grid-cols-3 gap-1.5 text-center text-[11px] font-medium">
                 <div
                   className={`py-1.5 px-1 rounded-lg transition-all ${
@@ -365,12 +486,14 @@ export default function App() {
               </div>
 
               <div className="text-[11px] text-stone-500 mt-2 flex items-center justify-between">
-                <span>Số món hiện đại: <strong>{danhGiaResult.so_mon_hien_dai}</strong></span>
+                <span>
+                  Số món hiện đại: <strong>{danhGiaResult.so_mon_hien_dai}</strong>
+                </span>
                 <span className="text-[10px] text-stone-400">0: Chuẩn • 1–2: Cách tân • 3–4: Phá cách</span>
               </div>
             </div>
 
-            {/* ĐIỂM TẠM (Văn hóa + Sự kiện, chưa gồm thẩm mỹ) */}
+            {/* ĐIỂM TẠM THỜI */}
             <div className="flex items-center justify-between p-3.5 bg-amber-50/50 rounded-2xl border border-amber-200/70">
               <div>
                 <span className="text-xs font-semibold text-stone-600 block">
@@ -391,7 +514,7 @@ export default function App() {
               </div>
             </div>
 
-            {/* CẢNH BÁO LUẬT VĂN HÓA (Hiển thị ngay trên thẻ, không chặn thao tác) */}
+            {/* CẢNH BÁO LUẬT VĂN HÓA */}
             <div className="flex flex-col gap-2">
               <span className="text-xs font-bold uppercase tracking-wider text-stone-500">
                 Cảnh báo văn hóa & Phản hồi tức thì:
@@ -591,7 +714,6 @@ export default function App() {
                           {item.loai === 'truyen_thong' ? 'Truyền thống' : 'Hiện đại'}
                         </span>
 
-                        {/* Nút (i) xem chi tiết văn hóa (Task G1.3) */}
                         <button
                           type="button"
                           onClick={(e) => {
@@ -630,7 +752,7 @@ export default function App() {
         Việt phục Remix POC • Dữ liệu minh họa POC, cần thẩm định
       </footer>
 
-      {/* Popup chi tiết văn hóa của món (Task G1.3) */}
+      {/* Popup chi tiết văn hóa */}
       <ItemDetailModal
         item={selectedItemForModal}
         onClose={() => setSelectedItemForModal(null)}

@@ -1,12 +1,12 @@
-import eventsData from '../../data/events.json';
-import itemsData from '../../data/items.json';
-import colorsData from '../../data/colors.json';
-import rulesData from '../../data/rules.json';
-import presetsData from '../../data/presets.json';
-import scoringData from '../../data/scoring.json';
-import compatibilityData from '../../data/compatibility.json';
-import geminiData from '../../data/gemini.json';
-import appConfigData from '../../data/app-config.json';
+import eventsData from '../../data/events.json' with { type: 'json' };
+import itemsData from '../../data/items.json' with { type: 'json' };
+import colorsData from '../../data/colors.json' with { type: 'json' };
+import rulesData from '../../data/rules.json' with { type: 'json' };
+import presetsData from '../../data/presets.json' with { type: 'json' };
+import scoringData from '../../data/scoring.json' with { type: 'json' };
+import compatibilityData from '../../data/compatibility.json' with { type: 'json' };
+import geminiData from '../../data/gemini.json' with { type: 'json' };
+import appConfigData from '../../data/app-config.json' with { type: 'json' };
 
 import type {
   EventItem,
