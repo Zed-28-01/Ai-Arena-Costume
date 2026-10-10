@@ -8,12 +8,24 @@ import {
   getColorById,
   getPresetById,
   getAppConfig,
+  getRuleById,
 } from '../shared/core/dataLoader.ts';
-import type { ItemLayer } from '../shared/core/types.ts';
+import { danhGia } from '../shared/core/engine.ts';
+import type { ItemLayer, ClothingItem } from '../shared/core/types.ts';
 import { Mannequin } from './components/Mannequin.tsx';
 import { GenderScreen } from './components/GenderScreen.tsx';
 import { EventScreen } from './components/EventScreen.tsx';
-import { RefreshCw, Download, ArrowLeft, Shirt } from 'lucide-react';
+import { ItemDetailModal } from './components/ItemDetailModal.tsx';
+import {
+  RefreshCw,
+  Download,
+  Shirt,
+  Info,
+  AlertOctagon,
+  AlertTriangle,
+  Info as InfoIcon,
+  CheckCircle2,
+} from 'lucide-react';
 
 const TAB_CONFIG: { key: ItemLayer; label: string }[] = [
   { key: 'ao', label: 'Áo' },
@@ -25,7 +37,7 @@ const TAB_CONFIG: { key: ItemLayer; label: string }[] = [
 
 type AppStep = 'gender' | 'event' | 'remix';
 
-// Hàm nạp bộ đồ từ preset chuẩn của sự kiện
+// Nạp bộ đồ từ preset chuẩn của sự kiện
 function loadOutfitFromPreset(eventId: string): Record<ItemLayer, string | null> {
   const outfit: Record<ItemLayer, string | null> = {
     ao: null,
@@ -78,6 +90,7 @@ export default function App() {
 
   const [activeTab, setActiveTab] = useState<ItemLayer>('ao');
   const [isExporting, setIsExporting] = useState(false);
+  const [selectedItemForModal, setSelectedItemForModal] = useState<ClothingItem | null>(null);
 
   // Sự kiện hiện tại
   const currentEvent = getEventById(eventId) || getEvents()[0];
@@ -87,10 +100,8 @@ export default function App() {
     sessionStorage.setItem('vietphuc_gender', selectedGender);
     setGender(selectedGender);
     if (sessionStorage.getItem('vietphuc_event')) {
-      // Đã có sự kiện từ trước, quay lại Remix
       setStep('remix');
     } else {
-      // Chưa có sự kiện, sang Bước 2
       setStep('event');
     }
   };
@@ -99,7 +110,6 @@ export default function App() {
   const handleSelectEvent = (selectedEventId: string) => {
     sessionStorage.setItem('vietphuc_event', selectedEventId);
     setEventId(selectedEventId);
-    // Nạp lại preset chuẩn của sự kiện mới
     const newOutfit = loadOutfitFromPreset(selectedEventId);
     setCurrentOutfit(newOutfit);
     setStep('remix');
@@ -190,9 +200,14 @@ export default function App() {
     }
   };
 
-  // Danh sách các món đưa cho Mannequin
+  // Danh sách các món đưa cho Mannequin và Lõi luật
   const wearingItemsList = Object.values(currentOutfit).filter(Boolean) as string[];
   const itemsInCurrentTab = getItemsByLayer(activeTab);
+
+  // GỌI LÕI LUẬT (Task G1.2): chạy trực tiếp danhGia từ shared/core/engine.ts
+  const danhGiaResult = danhGia(eventId, wearingItemsList, 'on');
+  // Điểm tạm = điểm văn hóa + điểm sự kiện (chưa gồm thẩm mỹ)
+  const diemTam = danhGiaResult.diem_van_hoa + danhGiaResult.diem_su_kien;
 
   // Điều hướng màn hình
   if (step === 'gender') {
@@ -210,10 +225,9 @@ export default function App() {
     );
   }
 
-  // Bước 3: Màn hình Remix
   return (
     <div className="min-h-screen bg-stone-100 text-stone-900 font-sans flex flex-col justify-between">
-      {/* Header động liên kết dữ liệu thật */}
+      {/* Header động */}
       <header className="border-b border-stone-200/80 bg-white/85 backdrop-blur sticky top-0 z-20 px-4 py-3 sm:px-6">
         <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center space-x-2.5">
@@ -222,11 +236,10 @@ export default function App() {
               Việt phục Remix
             </span>
             <span className="text-[11px] bg-stone-100 text-stone-600 px-2 py-0.5 rounded-full border border-stone-200">
-              G0.5 + G0.6
+              G1.2 + G1.3
             </span>
           </div>
 
-          {/* Thông tin sự kiện và giới tính thật + Nút chuyển đổi */}
           <div className="flex items-center space-x-2 sm:space-x-3 text-xs">
             {/* Đổi sự kiện */}
             <button
@@ -261,14 +274,12 @@ export default function App() {
       <main className="max-w-6xl w-full mx-auto p-4 sm:p-6 lg:p-8 flex-1 flex flex-col lg:flex-row gap-6 lg:gap-8 items-start">
         {/* Cột trái: Vùng Mannequin & Thử nghiệm xuất ảnh */}
         <section className="w-full lg:w-5/12 flex flex-col items-center justify-center">
-          {/* Khu vực chụp DOM bằng html-to-image */}
           <div
             ref={captureRef}
             className="w-full max-w-[340px] bg-white p-4 rounded-3xl border border-stone-200 shadow-sm flex flex-col items-center"
           >
             <Mannequin items={wearingItemsList} gender={gender} />
 
-            {/* Dòng chữ tiếng Việt có dấu trong vùng xuất ảnh */}
             <div className="mt-3 text-center w-full px-2">
               <div className="font-bold text-sm text-stone-800 tracking-tight">
                 Thử tải thẻ {currentEvent.id} - {selectedShirt?.ten || 'Cổ phục Việt'}
@@ -279,7 +290,6 @@ export default function App() {
             </div>
           </div>
 
-          {/* Nút tạm: Thử nghiệm xuất ảnh (Task G0.6) */}
           <div className="mt-3.5 w-full max-w-[340px] flex items-center justify-center">
             <button
               type="button"
@@ -293,32 +303,154 @@ export default function App() {
           </div>
         </section>
 
-        {/* Cột phải: Thẻ thông tin bộ đồ + Bảng chọn 5 tab */}
+        {/* Cột phải: Thẻ thông tin thời gian thực + Bảng chọn 5 tab */}
         <section className="w-full lg:w-7/12 flex flex-col gap-5">
-          {/* Thẻ thông tin bộ đồ */}
-          <div className="bg-white rounded-2xl p-5 border border-stone-200 shadow-sm">
-            <div className="flex items-center justify-between pb-3 border-b border-stone-100 mb-3">
+          {/* Thẻ thông tin văn hóa & Lõi luật phản hồi tức thì */}
+          <div className="bg-white rounded-3xl p-5 sm:p-6 border border-stone-200 shadow-sm flex flex-col gap-4">
+            {/* Tiêu đề sự kiện & Nhãn minh bạch */}
+            <div className="flex flex-wrap items-start justify-between gap-2 pb-3 border-b border-stone-100">
               <div>
-                <h2 className="text-sm font-bold text-stone-800">
+                <h2 className="text-base font-bold text-stone-900 tracking-tight">
                   {currentEvent.ten} ({currentEvent.id})
                 </h2>
-                <div className="text-xs text-amber-800 font-medium">
+                <div className="text-xs text-amber-800 font-medium mt-0.5">
                   Tinh thần: {currentEvent.tinh_than}
                 </div>
               </div>
-              <button
-                type="button"
-                onClick={() => setStep('event')}
-                className="text-xs text-stone-500 hover:text-stone-800 underline font-medium"
-              >
-                Đổi sự kiện khác
-              </button>
+              <span className="text-[11px] px-2.5 py-1 rounded-full bg-stone-100 text-stone-600 border border-stone-200/80 font-medium">
+                {appConfig.nhan_minh_bach.poc_disclaimer}
+              </span>
+            </div>
+
+            {/* CULTURE METER (Chỉ báo trực quan 3 mức) */}
+            <div className="p-3.5 bg-stone-50 rounded-2xl border border-stone-200/80">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-xs font-bold uppercase tracking-wider text-stone-500">
+                  Culture Meter (Mức cách tân)
+                </span>
+                <span className="text-xs font-bold text-stone-800 px-2 py-0.5 rounded bg-white border border-stone-200 shadow-2xs">
+                  {danhGiaResult.culture_meter}
+                </span>
+              </div>
+
+              {/* 3 phân đoạn trực quan */}
+              <div className="grid grid-cols-3 gap-1.5 text-center text-[11px] font-medium">
+                <div
+                  className={`py-1.5 px-1 rounded-lg transition-all ${
+                    danhGiaResult.culture_meter === 'Chuẩn lịch sử'
+                      ? 'bg-emerald-600 text-white font-semibold shadow-xs'
+                      : 'bg-stone-200/60 text-stone-400'
+                  }`}
+                >
+                  Chuẩn lịch sử
+                </div>
+                <div
+                  className={`py-1.5 px-1 rounded-lg transition-all ${
+                    danhGiaResult.culture_meter === 'Cách tân'
+                      ? 'bg-sky-600 text-white font-semibold shadow-xs'
+                      : 'bg-stone-200/60 text-stone-400'
+                  }`}
+                >
+                  Cách tân
+                </div>
+                <div
+                  className={`py-1.5 px-1 rounded-lg transition-all ${
+                    danhGiaResult.culture_meter === 'Phá cách'
+                      ? 'bg-purple-600 text-white font-semibold shadow-xs'
+                      : 'bg-stone-200/60 text-stone-400'
+                  }`}
+                >
+                  Phá cách
+                </div>
+              </div>
+
+              <div className="text-[11px] text-stone-500 mt-2 flex items-center justify-between">
+                <span>Số món hiện đại: <strong>{danhGiaResult.so_mon_hien_dai}</strong></span>
+                <span className="text-[10px] text-stone-400">0: Chuẩn • 1–2: Cách tân • 3–4: Phá cách</span>
+              </div>
+            </div>
+
+            {/* ĐIỂM TẠM (Văn hóa + Sự kiện, chưa gồm thẩm mỹ) */}
+            <div className="flex items-center justify-between p-3.5 bg-amber-50/50 rounded-2xl border border-amber-200/70">
+              <div>
+                <span className="text-xs font-semibold text-stone-600 block">
+                  Điểm tạm thời (phần code tính):
+                </span>
+                <span className="text-[11px] text-stone-400">
+                  Văn hóa: {danhGiaResult.diem_van_hoa}/40 • Sự kiện: {danhGiaResult.diem_su_kien}/30
+                </span>
+              </div>
+              <div className="text-right">
+                <div className="text-2xl font-black text-amber-900 tracking-tight leading-none">
+                  {diemTam}
+                  <span className="text-xs font-normal text-stone-500">/70</span>
+                </div>
+                <span className="text-[10px] text-stone-500 italic block mt-0.5">
+                  Điểm tạm, chưa gồm thẩm mỹ
+                </span>
+              </div>
+            </div>
+
+            {/* CẢNH BÁO LUẬT VĂN HÓA (Hiển thị ngay trên thẻ, không chặn thao tác) */}
+            <div className="flex flex-col gap-2">
+              <span className="text-xs font-bold uppercase tracking-wider text-stone-500">
+                Cảnh báo văn hóa & Phản hồi tức thì:
+              </span>
+
+              {danhGiaResult.luat_kich_hoat.length === 0 ? (
+                <div className="flex items-center space-x-2 p-3 rounded-2xl bg-emerald-50/60 border border-emerald-200/80 text-emerald-800 text-xs">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <span>Bộ trang phục hài hòa, chưa phát hiện xung đột theo bộ quy tắc hiện có.</span>
+                </div>
+              ) : (
+                <div className="space-y-2">
+                  {danhGiaResult.luat_kich_hoat.map((ruleId) => {
+                    const rule = getRuleById(ruleId);
+                    if (!rule) return null;
+
+                    const isTaboo = rule.loai === 'taboo';
+                    const isWarn = rule.loai === 'warn';
+
+                    return (
+                      <div
+                        key={rule.id}
+                        className={`p-3 rounded-2xl border text-xs leading-relaxed transition-all ${
+                          isTaboo
+                            ? 'bg-rose-50/80 border-rose-200 text-rose-950'
+                            : isWarn
+                            ? 'bg-amber-50/80 border-amber-200 text-amber-950'
+                            : 'bg-stone-50 border-stone-200 text-stone-800'
+                        }`}
+                      >
+                        <div className="flex items-center justify-between mb-1 gap-2">
+                          <div className="flex items-center space-x-1.5 font-bold">
+                            {isTaboo && <AlertOctagon className="w-4 h-4 text-rose-600 shrink-0" />}
+                            {isWarn && <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0" />}
+                            {!isTaboo && !isWarn && <InfoIcon className="w-4 h-4 text-stone-500 shrink-0" />}
+                            <span>
+                              [{rule.id}] {rule.tieu_de}
+                            </span>
+                          </div>
+
+                          {!rule.da_duyet && (
+                            <span className="text-[10px] px-1.5 py-0.5 rounded bg-white/70 border border-black/10 text-stone-500 font-normal shrink-0">
+                              Nội dung nháp, chờ thẩm định
+                            </span>
+                          )}
+                        </div>
+
+                        <p className="pl-5 text-stone-700">{rule.ly_do}</p>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
             </div>
 
             {/* Chi tiết từng món đang mặc */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-2 border-t border-stone-100">
               <div className="flex items-center justify-between p-2 rounded-lg bg-stone-50 border border-stone-100">
-                <span className="text-stone-500 font-medium">Áo (bắt buộc):</span>
+                <span className="text-stone-500 font-medium">Áo:</span>
                 <span className="font-semibold text-stone-800">
                   {selectedShirt?.ten || '(Chưa chọn)'}{' '}
                   {selectedShirtColor ? `• ${selectedShirtColor.ten}` : ''}
@@ -326,21 +458,21 @@ export default function App() {
               </div>
 
               <div className="flex items-center justify-between p-2 rounded-lg bg-stone-50 border border-stone-100">
-                <span className="text-stone-500 font-medium">Quần (bắt buộc):</span>
+                <span className="text-stone-500 font-medium">Quần:</span>
                 <span className="font-semibold text-stone-800">
                   {currentOutfit.quan ? getItemById(currentOutfit.quan)?.ten : '(Chưa chọn)'}
                 </span>
               </div>
 
               <div className="flex items-center justify-between p-2 rounded-lg bg-stone-50 border border-stone-100">
-                <span className="text-stone-500 font-medium">Giày dép (bắt buộc):</span>
+                <span className="text-stone-500 font-medium">Giày dép:</span>
                 <span className="font-semibold text-stone-800">
                   {currentOutfit.giay ? getItemById(currentOutfit.giay)?.ten : '(Chưa chọn)'}
                 </span>
               </div>
 
               <div className="flex items-center justify-between p-2 rounded-lg bg-stone-50 border border-stone-100">
-                <span className="text-stone-500 font-medium">Đội đầu (tùy chọn):</span>
+                <span className="text-stone-500 font-medium">Đội đầu:</span>
                 <span className="font-semibold text-stone-700">
                   {currentOutfit.doi_dau ? (
                     getItemById(currentOutfit.doi_dau)?.ten
@@ -351,7 +483,7 @@ export default function App() {
               </div>
 
               <div className="flex items-center justify-between p-2 rounded-lg bg-stone-50 border border-stone-100 sm:col-span-2">
-                <span className="text-stone-500 font-medium">Phụ kiện (tùy chọn):</span>
+                <span className="text-stone-500 font-medium">Phụ kiện:</span>
                 <span className="font-semibold text-stone-700">
                   {currentOutfit.phu_kien ? (
                     getItemById(currentOutfit.phu_kien)?.ten
@@ -364,7 +496,7 @@ export default function App() {
           </div>
 
           {/* Bảng chọn đồ 5 Tab */}
-          <div className="bg-white rounded-2xl p-5 border border-stone-200 shadow-sm flex flex-col">
+          <div className="bg-white rounded-3xl p-5 sm:p-6 border border-stone-200 shadow-sm flex flex-col">
             <div className="flex items-center space-x-1 border-b border-stone-200 pb-2 mb-4 overflow-x-auto">
               {TAB_CONFIG.map((tab) => {
                 const isSelected = activeTab === tab.key;
@@ -388,7 +520,7 @@ export default function App() {
 
             {/* Bảng màu áo */}
             {activeTab === 'ao' && selectedShirt && (
-              <div className="mb-4 p-3.5 bg-stone-50 rounded-xl border border-stone-200/80">
+              <div className="mb-4 p-3.5 bg-stone-50 rounded-2xl border border-stone-200/80">
                 <div className="text-xs font-semibold text-stone-600 mb-2">
                   Bảng màu của {selectedShirt.ten}:
                 </div>
@@ -432,19 +564,18 @@ export default function App() {
                 const isRequired = appConfig.tang_bat_buoc.includes(activeTab);
 
                 return (
-                  <button
+                  <div
                     key={item.id}
-                    type="button"
                     onClick={() => handleSelectItem(item.id, activeTab)}
-                    className={`p-3 rounded-xl border text-left transition-all relative flex flex-col justify-between ${
+                    className={`p-3 rounded-2xl border text-left transition-all relative flex flex-col justify-between cursor-pointer group ${
                       isCurrentActive
                         ? 'border-stone-900 bg-stone-50/70 shadow-sm ring-1 ring-stone-900/10'
                         : 'border-stone-200 hover:border-stone-300 hover:bg-stone-50/40 bg-white'
                     }`}
                   >
                     <div className="flex items-start justify-between mb-1.5">
-                      <span className="font-semibold text-xs text-stone-900">{item.ten}</span>
-                      <div className="flex items-center space-x-1">
+                      <span className="font-semibold text-xs text-stone-900 pr-1">{item.ten}</span>
+                      <div className="flex items-center space-x-1 shrink-0">
                         {isFault && (
                           <span className="text-[10px] px-1.5 py-0.5 rounded bg-rose-100 text-rose-700 font-medium">
                             Món gây lỗi
@@ -459,6 +590,20 @@ export default function App() {
                         >
                           {item.loai === 'truyen_thong' ? 'Truyền thống' : 'Hiện đại'}
                         </span>
+
+                        {/* Nút (i) xem chi tiết văn hóa (Task G1.3) */}
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setSelectedItemForModal(item);
+                          }}
+                          className="p-1 rounded-full text-stone-400 hover:text-stone-700 hover:bg-stone-200/80 transition-colors ml-1"
+                          title="Xem nguồn gốc & ý nghĩa văn hóa"
+                          aria-label={`Xem chi tiết văn hóa của ${item.ten}`}
+                        >
+                          <Info className="w-3.5 h-3.5" />
+                        </button>
                       </div>
                     </div>
 
@@ -472,7 +617,7 @@ export default function App() {
                           : '+ Chọn'}
                       </span>
                     </div>
-                  </button>
+                  </div>
                 );
               })}
             </div>
@@ -484,6 +629,12 @@ export default function App() {
       <footer className="text-center py-3 text-xs text-stone-400 border-t border-stone-200/80 bg-white">
         Việt phục Remix POC • Dữ liệu minh họa POC, cần thẩm định
       </footer>
+
+      {/* Popup chi tiết văn hóa của món (Task G1.3) */}
+      <ItemDetailModal
+        item={selectedItemForModal}
+        onClose={() => setSelectedItemForModal(null)}
+      />
     </div>
   );
 }

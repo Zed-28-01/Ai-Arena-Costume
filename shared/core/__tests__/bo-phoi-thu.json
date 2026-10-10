@@ -1,0 +1,425 @@
+[
+  {
+    "id": "T01",
+    "mo_ta": "Preset E1 chuẩn",
+    "su_kien": "E1",
+    "mon": [
+      "top_tac:do_son",
+      "bot_lua_trang",
+      "head_khan_dong",
+      "shoe_guoc_moc"
+    ],
+    "tham_my_gia_dinh": "on",
+    "ky_vong": {
+      "luat_kich_hoat": [],
+      "isTaboo": false,
+      "diem_van_hoa": 40,
+      "diem_su_kien": 30,
+      "diem_tham_my": 20,
+      "so_mon_hien_dai": 0,
+      "culture_meter": "Chuẩn lịch sử",
+      "tong_diem": 90,
+      "nhan": "Cổ phong Chuẩn lễ"
+    }
+  },
+  {
+    "id": "T02",
+    "mo_ta": "E1 chuẩn, thẩm mỹ tốt",
+    "su_kien": "E1",
+    "mon": [
+      "top_tac:do_son",
+      "bot_lua_trang",
+      "head_khan_dong",
+      "shoe_guoc_moc"
+    ],
+    "tham_my_gia_dinh": "tot",
+    "ky_vong": {
+      "luat_kich_hoat": [],
+      "isTaboo": false,
+      "diem_van_hoa": 40,
+      "diem_su_kien": 30,
+      "diem_tham_my": 30,
+      "so_mon_hien_dai": 0,
+      "culture_meter": "Chuẩn lịch sử",
+      "tong_diem": 100,
+      "nhan": "Cổ phong Chuẩn lễ"
+    }
+  },
+  {
+    "id": "T03",
+    "mo_ta": "E1 chuẩn, thẩm mỹ chưa",
+    "su_kien": "E1",
+    "mon": [
+      "top_tac:do_son",
+      "bot_lua_trang",
+      "head_khan_dong",
+      "shoe_guoc_moc"
+    ],
+    "tham_my_gia_dinh": "chua",
+    "ky_vong": {
+      "luat_kich_hoat": [],
+      "isTaboo": false,
+      "diem_van_hoa": 40,
+      "diem_su_kien": 30,
+      "diem_tham_my": 10,
+      "so_mon_hien_dai": 0,
+      "culture_meter": "Chuẩn lịch sử",
+      "tong_diem": 80,
+      "nhan": "Cổ phong Cơ bản"
+    }
+  },
+  {
+    "id": "T04",
+    "mo_ta": "Preset E1 remix (sneaker + Áo Tấc, R04)",
+    "su_kien": "E1",
+    "mon": [
+      "top_tac:xanh_thien_thanh",
+      "bot_lua_trang",
+      "shoe_sneaker"
+    ],
+    "tham_my_gia_dinh": "on",
+    "ky_vong": {
+      "luat_kich_hoat": [
+        "R04"
+      ],
+      "isTaboo": false,
+      "diem_van_hoa": 40,
+      "diem_su_kien": 30,
+      "diem_tham_my": 20,
+      "so_mon_hien_dai": 1,
+      "culture_meter": "Cách tân",
+      "tong_diem": 89,
+      "nhan": "Remix Tinh tế (Modern Fusion)"
+    }
+  },
+  {
+    "id": "T05",
+    "mo_ta": "Preset E2 chuẩn",
+    "su_kien": "E2",
+    "mon": [
+      "top_ngu_than:xanh_luc",
+      "bot_lua_trang",
+      "acc_quat_giay",
+      "shoe_guoc_moc"
+    ],
+    "tham_my_gia_dinh": "on",
+    "ky_vong": {
+      "luat_kich_hoat": [],
+      "isTaboo": false,
+      "diem_van_hoa": 40,
+      "diem_su_kien": 30,
+      "diem_tham_my": 20,
+      "so_mon_hien_dai": 0,
+      "culture_meter": "Chuẩn lịch sử",
+      "tong_diem": 90,
+      "nhan": "Cổ phong Chuẩn lễ"
+    }
+  },
+  {
+    "id": "T06",
+    "mo_ta": "Preset E2 remix (4 món hiện đại)",
+    "su_kien": "E2",
+    "mon": [
+      "top_ngu_than:hong_phan",
+      "bot_tay_au",
+      "shoe_sneaker",
+      "head_bang_do",
+      "acc_tui_coi"
+    ],
+    "tham_my_gia_dinh": "on",
+    "ky_vong": {
+      "luat_kich_hoat": [],
+      "isTaboo": false,
+      "diem_van_hoa": 40,
+      "diem_su_kien": 30,
+      "diem_tham_my": 20,
+      "so_mon_hien_dai": 4,
+      "culture_meter": "Phá cách",
+      "tong_diem": 89,
+      "nhan": "Remix Tinh tế (Modern Fusion)"
+    }
+  },
+  {
+    "id": "T07",
+    "mo_ta": "Bỏ trống đội đầu, phụ kiện",
+    "su_kien": "E1",
+    "mon": [
+      "top_tac:do_son",
+      "bot_lua_trang",
+      "shoe_guoc_moc"
+    ],
+    "tham_my_gia_dinh": "on",
+    "ky_vong": {
+      "luat_kich_hoat": [],
+      "isTaboo": false,
+      "diem_van_hoa": 40,
+      "diem_su_kien": 30,
+      "diem_tham_my": 20,
+      "so_mon_hien_dai": 0,
+      "culture_meter": "Chuẩn lịch sử",
+      "tong_diem": 90,
+      "nhan": "Cổ phong Chuẩn lễ"
+    }
+  },
+  {
+    "id": "T08",
+    "mo_ta": "3 món hiện đại (Phá cách)",
+    "su_kien": "E2",
+    "mon": [
+      "top_ngu_than:xanh_luc",
+      "bot_tay_au",
+      "shoe_sneaker",
+      "head_bang_do"
+    ],
+    "tham_my_gia_dinh": "on",
+    "ky_vong": {
+      "luat_kich_hoat": [],
+      "isTaboo": false,
+      "diem_van_hoa": 40,
+      "diem_su_kien": 30,
+      "diem_tham_my": 20,
+      "so_mon_hien_dai": 3,
+      "culture_meter": "Phá cách",
+      "tong_diem": 89,
+      "nhan": "Remix Tinh tế (Modern Fusion)"
+    }
+  },
+  {
+    "id": "T09",
+    "mo_ta": "Cảnh báo mềm R03",
+    "su_kien": "E2",
+    "mon": [
+      "top_ngu_than:xanh_luc",
+      "bot_lua_trang",
+      "shoe_dep_le"
+    ],
+    "tham_my_gia_dinh": "on",
+    "ky_vong": {
+      "luat_kich_hoat": [
+        "R03"
+      ],
+      "isTaboo": false,
+      "diem_van_hoa": 30,
+      "diem_su_kien": 30,
+      "diem_tham_my": 20,
+      "so_mon_hien_dai": 1,
+      "culture_meter": "Cách tân",
+      "tong_diem": 80,
+      "nhan": "Remix Tinh tế (Modern Fusion)"
+    }
+  },
+  {
+    "id": "T10",
+    "mo_ta": "R03 + thẩm mỹ chưa (Remix dưới 75)",
+    "su_kien": "E2",
+    "mon": [
+      "top_ngu_than:xanh_luc",
+      "bot_lua_trang",
+      "shoe_dep_le"
+    ],
+    "tham_my_gia_dinh": "chua",
+    "ky_vong": {
+      "luat_kich_hoat": [
+        "R03"
+      ],
+      "isTaboo": false,
+      "diem_van_hoa": 30,
+      "diem_su_kien": 30,
+      "diem_tham_my": 10,
+      "so_mon_hien_dai": 1,
+      "culture_meter": "Cách tân",
+      "tong_diem": 70,
+      "nhan": "Remix Chưa ăn ý"
+    }
+  },
+  {
+    "id": "T11",
+    "mo_ta": "Taboo R01 (quần short)",
+    "su_kien": "E1",
+    "mon": [
+      "top_tac:do_son",
+      "bot_short",
+      "head_khan_dong",
+      "shoe_guoc_moc"
+    ],
+    "tham_my_gia_dinh": "on",
+    "ky_vong": {
+      "luat_kich_hoat": [
+        "R01"
+      ],
+      "isTaboo": true,
+      "diem_van_hoa": 0,
+      "diem_su_kien": 30,
+      "diem_tham_my": 20,
+      "so_mon_hien_dai": 1,
+      "culture_meter": "Cách tân",
+      "tong_diem": 49,
+      "nhan": "Lỗi Văn hóa"
+    }
+  },
+  {
+    "id": "T12",
+    "mo_ta": "Taboo R02 (dép lê + Áo Tấc)",
+    "su_kien": "E1",
+    "mon": [
+      "top_tac:do_son",
+      "bot_lua_trang",
+      "shoe_dep_le"
+    ],
+    "tham_my_gia_dinh": "on",
+    "ky_vong": {
+      "luat_kich_hoat": [
+        "R02"
+      ],
+      "isTaboo": true,
+      "diem_van_hoa": 0,
+      "diem_su_kien": 30,
+      "diem_tham_my": 20,
+      "so_mon_hien_dai": 1,
+      "culture_meter": "Cách tân",
+      "tong_diem": 49,
+      "nhan": "Lỗi Văn hóa"
+    }
+  },
+  {
+    "id": "T13",
+    "mo_ta": "Taboo + thẩm mỹ tốt vẫn bị trần 49",
+    "su_kien": "E1",
+    "mon": [
+      "top_tac:do_son",
+      "bot_short",
+      "shoe_sneaker"
+    ],
+    "tham_my_gia_dinh": "tot",
+    "ky_vong": {
+      "luat_kich_hoat": [
+        "R01",
+        "R04"
+      ],
+      "isTaboo": true,
+      "diem_van_hoa": 0,
+      "diem_su_kien": 30,
+      "diem_tham_my": 30,
+      "so_mon_hien_dai": 2,
+      "culture_meter": "Cách tân",
+      "tong_diem": 49,
+      "nhan": "Lỗi Văn hóa"
+    }
+  },
+  {
+    "id": "T14",
+    "mo_ta": "Áo lệch sự kiện",
+    "su_kien": "E2",
+    "mon": [
+      "top_tac:do_son",
+      "bot_lua_trang",
+      "head_khan_dong",
+      "shoe_guoc_moc"
+    ],
+    "tham_my_gia_dinh": "on",
+    "ky_vong": {
+      "luat_kich_hoat": [],
+      "isTaboo": false,
+      "diem_van_hoa": 40,
+      "diem_su_kien": 15,
+      "diem_tham_my": 20,
+      "so_mon_hien_dai": 0,
+      "culture_meter": "Chuẩn lịch sử",
+      "tong_diem": 74,
+      "nhan": "Lệch gu / Sai bối cảnh"
+    }
+  },
+  {
+    "id": "T15",
+    "mo_ta": "Áo lệch + thẩm mỹ tốt vẫn bị trần 74",
+    "su_kien": "E2",
+    "mon": [
+      "top_tac:do_son",
+      "bot_lua_trang",
+      "shoe_guoc_moc"
+    ],
+    "tham_my_gia_dinh": "tot",
+    "ky_vong": {
+      "luat_kich_hoat": [],
+      "isTaboo": false,
+      "diem_van_hoa": 40,
+      "diem_su_kien": 15,
+      "diem_tham_my": 30,
+      "so_mon_hien_dai": 0,
+      "culture_meter": "Chuẩn lịch sử",
+      "tong_diem": 74,
+      "nhan": "Lệch gu / Sai bối cảnh"
+    }
+  },
+  {
+    "id": "T16",
+    "mo_ta": "Áo lệch + món hiện đại",
+    "su_kien": "E1",
+    "mon": [
+      "top_ngu_than:hong_phan",
+      "bot_tay_au",
+      "shoe_sneaker"
+    ],
+    "tham_my_gia_dinh": "on",
+    "ky_vong": {
+      "luat_kich_hoat": [],
+      "isTaboo": false,
+      "diem_van_hoa": 40,
+      "diem_su_kien": 15,
+      "diem_tham_my": 20,
+      "so_mon_hien_dai": 2,
+      "culture_meter": "Cách tân",
+      "tong_diem": 74,
+      "nhan": "Lệch gu / Sai bối cảnh"
+    }
+  },
+  {
+    "id": "T17",
+    "mo_ta": "Áo lệch + cảnh báo mềm",
+    "su_kien": "E1",
+    "mon": [
+      "top_ngu_than:xanh_luc",
+      "bot_lua_trang",
+      "shoe_dep_le"
+    ],
+    "tham_my_gia_dinh": "on",
+    "ky_vong": {
+      "luat_kich_hoat": [
+        "R03"
+      ],
+      "isTaboo": false,
+      "diem_van_hoa": 30,
+      "diem_su_kien": 15,
+      "diem_tham_my": 20,
+      "so_mon_hien_dai": 1,
+      "culture_meter": "Cách tân",
+      "tong_diem": 65,
+      "nhan": "Lệch gu / Sai bối cảnh"
+    }
+  },
+  {
+    "id": "T18",
+    "mo_ta": "Áo lệch + 2 taboo (điểm dưới trần)",
+    "su_kien": "E2",
+    "mon": [
+      "top_tac:do_son",
+      "bot_short",
+      "shoe_dep_le"
+    ],
+    "tham_my_gia_dinh": "on",
+    "ky_vong": {
+      "luat_kich_hoat": [
+        "R01",
+        "R02"
+      ],
+      "isTaboo": true,
+      "diem_van_hoa": 0,
+      "diem_su_kien": 15,
+      "diem_tham_my": 20,
+      "so_mon_hien_dai": 2,
+      "culture_meter": "Cách tân",
+      "tong_diem": 35,
+      "nhan": "Lỗi Văn hóa"
+    }
+  }
+]
