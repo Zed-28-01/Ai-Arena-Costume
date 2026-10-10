@@ -1,0 +1,16 @@
+[
+  {
+    "id": "E1",
+    "ten": "Lễ tốt nghiệp / Kỷ yếu",
+    "tinh_than": "Trang trọng, tự hào",
+    "mo_ta": "Sự kiện đánh dấu cột mốc trưởng thành, tôn vinh truyền thống học tập và nét đẹp lễ phục trang nghiêm.",
+    "preset_chuan_id": "PR_E1_chuan"
+  },
+  {
+    "id": "E2",
+    "ten": "Du xuân / Tết",
+    "tinh_than": "Rực rỡ, vui tươi, năng động",
+    "mo_ta": "Dịp lễ hội đầu năm đón xuân sum vầy, dạo phố, chụp ảnh và tận hưởng không khí tươi mới tràn đầy năng lượng.",
+    "preset_chuan_id": "PR_E2_chuan"
+  }
+]

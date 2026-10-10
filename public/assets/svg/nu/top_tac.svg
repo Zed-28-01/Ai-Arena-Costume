@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 800" width="100%" height="100%">
+  <!-- placeholder: Áo Tấc Nữ (Tay thụng rộng trang trọng) -->
+  <g id="nu-top_tac" fill="currentColor" stroke="#333333" stroke-width="1.5" stroke-opacity="0.3">
+    <!-- Cổ áo lập lĩnh (cổ đứng) -->
+    <path d="M185 142 Q200 138 215 142 L217 154 Q200 150 183 154 Z" fill="#FFFFFF" fill-opacity="0.9" />
+    <!-- Tay thụng rộng bên trái (xòe rộng đặc trưng Áo Tấc) -->
+    <path d="M145 152 L75 220 L65 390 L125 430 L140 330 Z" />
+    <!-- Tay thụng rộng bên phải -->
+    <path d="M255 152 L325 220 L335 390 L275 430 L260 330 Z" />
+    <!-- Thân áo thụng dáng chữ A xòe rộng, tà dài qua gối -->
+    <path d="M185 150 L145 152 L125 340 L110 540 L290 540 L275 340 L255 152 L215 150 Z" />
+    <!-- Đường cài cúc nghiêng ngũ thân -->
+    <path d="M200 152 Q215 170 225 200 L225 350" fill="none" stroke="#222222" stroke-width="2" stroke-opacity="0.4" />
+  </g>
+</svg>

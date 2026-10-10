@@ -1,0 +1,194 @@
+[
+  {
+    "id": "top_tac",
+    "ten": "Áo Tấc",
+    "tang": "ao",
+    "loai": "truyen_thong",
+    "is_fault": false,
+    "mau": ["do_son", "xanh_thien_thanh"],
+    "mo_ta": "[CHỜ BỔ SUNG]",
+    "tu_khoa": ["trang nghiem", "le phuc", "tay thung"],
+    "nguon_goc_2_dong": ["[CHỜ BỔ SUNG]", "[CHỜ BỔ SUNG]"],
+    "nguon_ids": [],
+    "hinh": {
+      "nam": "/assets/svg/nam/top_tac.svg",
+      "nu": "/assets/svg/nu/top_tac.svg"
+    }
+  },
+  {
+    "id": "top_ngu_than",
+    "ten": "Áo Ngũ Thân tay chẽn",
+    "tang": "ao",
+    "loai": "truyen_thong",
+    "is_fault": false,
+    "mau": ["xanh_luc", "hong_phan"],
+    "mo_ta": "[CHỜ BỔ SUNG]",
+    "tu_khoa": ["nang dong", "thuong phuc", "tay chen"],
+    "nguon_goc_2_dong": ["[CHỜ BỔ SUNG]", "[CHỜ BỔ SUNG]"],
+    "nguon_ids": [],
+    "hinh": {
+      "nam": "/assets/svg/nam/top_ngu_than.svg",
+      "nu": "/assets/svg/nu/top_ngu_than.svg"
+    }
+  },
+  {
+    "id": "bot_lua_trang",
+    "ten": "Quần lụa trắng ống suông",
+    "tang": "quan",
+    "loai": "truyen_thong",
+    "is_fault": false,
+    "mau": ["trang"],
+    "mo_ta": "[CHỜ BỔ SUNG]",
+    "tu_khoa": ["truyen thong", "thanh lich", "ong suong"],
+    "nguon_goc_2_dong": ["[CHỜ BỔ SUNG]", "[CHỜ BỔ SUNG]"],
+    "nguon_ids": [],
+    "hinh": {
+      "nam": "/assets/svg/nam/bot_lua_trang.svg",
+      "nu": "/assets/svg/nu/bot_lua_trang.svg"
+    }
+  },
+  {
+    "id": "bot_tay_au",
+    "ten": "Quần tây âu xếp ly",
+    "tang": "quan",
+    "loai": "hien_dai",
+    "is_fault": false,
+    "mau": ["den"],
+    "mo_ta": "[CHỜ BỔ SUNG]",
+    "tu_khoa": ["hien dai", "thanh lich", "tay au"],
+    "nguon_goc_2_dong": ["[CHỜ BỔ SUNG]", "[CHỜ BỔ SUNG]"],
+    "nguon_ids": [],
+    "hinh": {
+      "nam": "/assets/svg/nam/bot_tay_au.svg",
+      "nu": "/assets/svg/nu/bot_tay_au.svg"
+    }
+  },
+  {
+    "id": "bot_short",
+    "ten": "Quần short",
+    "tang": "quan",
+    "loai": "hien_dai",
+    "is_fault": true,
+    "mau": ["be"],
+    "mo_ta": "[CHỜ BỔ SUNG]",
+    "tu_khoa": ["nang dong", "mon gay loi", "thieu trang nghiem"],
+    "nguon_goc_2_dong": ["[CHỜ BỔ SUNG]", "[CHỜ BỔ SUNG]"],
+    "nguon_ids": [],
+    "hinh": {
+      "nam": "/assets/svg/nam/bot_short.svg",
+      "nu": "/assets/svg/nu/bot_short.svg"
+    }
+  },
+  {
+    "id": "head_khan_dong",
+    "ten": "Khăn đóng",
+    "tang": "doi_dau",
+    "loai": "truyen_thong",
+    "is_fault": false,
+    "mau": ["den"],
+    "mo_ta": "[CHỜ BỔ SUNG]",
+    "tu_khoa": ["truyen thong", "chuan le", "doi dau"],
+    "nguon_goc_2_dong": ["[CHỜ BỔ SUNG]", "[CHỜ BỔ SUNG]"],
+    "nguon_ids": [],
+    "hinh": {
+      "nam": "/assets/svg/chung/head_khan_dong.svg",
+      "nu": "/assets/svg/chung/head_khan_dong.svg"
+    }
+  },
+  {
+    "id": "head_bang_do",
+    "ten": "Băng đô ngọc trai bản to",
+    "tang": "doi_dau",
+    "loai": "hien_dai",
+    "is_fault": false,
+    "mau": ["trang_nga"],
+    "mo_ta": "[CHỜ BỔ SUNG]",
+    "tu_khoa": ["hien dai", "ngoc trai", "nu tinh"],
+    "nguon_goc_2_dong": ["[CHỜ BỔ SUNG]", "[CHỜ BỔ SUNG]"],
+    "nguon_ids": [],
+    "hinh": {
+      "nam": "/assets/svg/chung/head_bang_do.svg",
+      "nu": "/assets/svg/chung/head_bang_do.svg"
+    }
+  },
+  {
+    "id": "shoe_guoc_moc",
+    "ten": "Guốc mộc quai nhung",
+    "tang": "giay",
+    "loai": "truyen_thong",
+    "is_fault": false,
+    "mau": ["do"],
+    "mo_ta": "[CHỜ BỔ SUNG]",
+    "tu_khoa": ["truyen thong", "moc mac", "quai nhung"],
+    "nguon_goc_2_dong": ["[CHỜ BỔ SUNG]", "[CHỜ BỔ SUNG]"],
+    "nguon_ids": [],
+    "hinh": {
+      "nam": "/assets/svg/chung/shoe_guoc_moc.svg",
+      "nu": "/assets/svg/chung/shoe_guoc_moc.svg"
+    }
+  },
+  {
+    "id": "shoe_sneaker",
+    "ten": "Sneaker trắng cổ thấp",
+    "tang": "giay",
+    "loai": "hien_dai",
+    "is_fault": false,
+    "mau": ["trang"],
+    "mo_ta": "[CHỜ BỔ SUNG]",
+    "tu_khoa": ["hien dai", "tre trung", "co thap"],
+    "nguon_goc_2_dong": ["[CHỜ BỔ SUNG]", "[CHỜ BỔ SUNG]"],
+    "nguon_ids": [],
+    "hinh": {
+      "nam": "/assets/svg/chung/shoe_sneaker.svg",
+      "nu": "/assets/svg/chung/shoe_sneaker.svg"
+    }
+  },
+  {
+    "id": "shoe_dep_le",
+    "ten": "Dép lê",
+    "tang": "giay",
+    "loai": "hien_dai",
+    "is_fault": true,
+    "mau": ["den"],
+    "mo_ta": "[CHỜ BỔ SUNG]",
+    "tu_khoa": ["buong tuong", "mon gay loi", "kem trang nghiem"],
+    "nguon_goc_2_dong": ["[CHỜ BỔ SUNG]", "[CHỜ BỔ SUNG]"],
+    "nguon_ids": [],
+    "hinh": {
+      "nam": "/assets/svg/chung/shoe_dep_le.svg",
+      "nu": "/assets/svg/chung/shoe_dep_le.svg"
+    }
+  },
+  {
+    "id": "acc_quat_giay",
+    "ten": "Quạt giấy dó",
+    "tang": "phu_kien",
+    "loai": "truyen_thong",
+    "is_fault": false,
+    "mau": ["nau_giay"],
+    "mo_ta": "[CHỜ BỔ SUNG]",
+    "tu_khoa": ["truyen thong", "thanh tao", "giay do"],
+    "nguon_goc_2_dong": ["[CHỜ BỔ SUNG]", "[CHỜ BỔ SUNG]"],
+    "nguon_ids": [],
+    "hinh": {
+      "nam": "/assets/svg/chung/acc_quat_giay.svg",
+      "nu": "/assets/svg/chung/acc_quat_giay.svg"
+    }
+  },
+  {
+    "id": "acc_tui_coi",
+    "ten": "Túi cói mini",
+    "tang": "phu_kien",
+    "loai": "hien_dai",
+    "is_fault": false,
+    "mau": ["be"],
+    "mo_ta": "[CHỜ BỔ SUNG]",
+    "tu_khoa": ["hien dai", "vintage", "tui coi"],
+    "nguon_goc_2_dong": ["[CHỜ BỔ SUNG]", "[CHỜ BỔ SUNG]"],
+    "nguon_ids": [],
+    "hinh": {
+      "nam": "/assets/svg/chung/acc_tui_coi.svg",
+      "nu": "/assets/svg/chung/acc_tui_coi.svg"
+    }
+  }
+]

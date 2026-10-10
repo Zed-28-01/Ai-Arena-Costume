@@ -1,0 +1,132 @@
+{
+  "cot_diem": {
+    "van_hoa": {
+      "diem_toi_da": 40,
+      "diem_khoi_tao": 40,
+      "taboo_ve_0": true,
+      "tru_canh_bao_mem_moi_cai": 10,
+      "tru_don": true,
+      "diem_toi_thieu": 0
+    },
+    "su_kien": {
+      "diem_toi_da": 30,
+      "ao_hop": 30,
+      "ao_lech": 15
+    },
+    "tham_my": {
+      "diem_toi_da": 30,
+      "tot": 30,
+      "on": 20,
+      "chua": 10,
+      "du_phong_tam_tinh": 20
+    }
+  },
+  "tran_diem": [
+    {
+      "dieu_kien": "isTaboo",
+      "muc_tran": 49,
+      "thu_tu_uu_tien": 1
+    },
+    {
+      "dieu_kien": "ao_lech_su_kien",
+      "muc_tran": 74,
+      "thu_tu_uu_tien": 2
+    },
+    {
+      "dieu_kien": "co_mon_hien_dai",
+      "muc_tran": 89,
+      "thu_tu_uu_tien": 3
+    }
+  ],
+  "culture_meter": {
+    "chuan_lich_su": {
+      "so_mon_hien_dai_min": 0,
+      "so_mon_hien_dai_max": 0,
+      "nhan": "Chuẩn lịch sử"
+    },
+    "cach_tan": {
+      "so_mon_hien_dai_min": 1,
+      "so_mon_hien_dai_max": 2,
+      "nhan": "Cách tân"
+    },
+    "pha_cach": {
+      "so_mon_hien_dai_min": 3,
+      "so_mon_hien_dai_max": 4,
+      "nhan": "Phá cách"
+    }
+  },
+  "nhan_phong_cach": [
+    {
+      "id": "loi_van_hoa",
+      "ten": "Lỗi Văn hóa",
+      "thu_tu_xet": 1,
+      "khi_taboo": true,
+      "khi_ao_lech": null,
+      "co_mon_hien_dai": null,
+      "diem_tu": null,
+      "diem_duoi": null,
+      "dieu_kien": "Có isTaboo = true",
+      "mo_ta": "Bộ trang phục phạm phải quy tắc cấm kỵ (taboo) nghiêm trọng trong văn hóa cổ phục."
+    },
+    {
+      "id": "lech_gu",
+      "ten": "Lệch gu / Sai bối cảnh",
+      "thu_tu_xet": 2,
+      "khi_taboo": false,
+      "khi_ao_lech": true,
+      "co_mon_hien_dai": null,
+      "diem_tu": null,
+      "diem_duoi": null,
+      "dieu_kien": "Áo chính lệch bối cảnh sự kiện đã chọn",
+      "mo_ta": "Kiểu dáng áo chính chưa phù hợp với tính chất và bối cảnh sự kiện đã chọn."
+    },
+    {
+      "id": "co_phong_chuan_le",
+      "ten": "Cổ phong Chuẩn lễ",
+      "thu_tu_xet": 3,
+      "khi_taboo": false,
+      "khi_ao_lech": false,
+      "co_mon_hien_dai": false,
+      "diem_tu": 90,
+      "diem_duoi": null,
+      "dieu_kien": "Không có món hiện đại và tổng điểm ≥ 90",
+      "mo_ta": "Bộ trang phục thuần truyền thống, chỉnh chu, đúng mực và đạt điểm số xuất sắc."
+    },
+    {
+      "id": "co_phong_co_ban",
+      "ten": "Cổ phong Cơ bản",
+      "thu_tu_xet": 4,
+      "khi_taboo": false,
+      "khi_ao_lech": false,
+      "co_mon_hien_dai": false,
+      "diem_tu": null,
+      "diem_duoi": 90,
+      "dieu_kien": "Không có món hiện đại và tổng điểm < 90",
+      "mo_ta": "Bộ trang phục thuần truyền thống nhưng còn thiếu sót điểm phụ kiện hoặc có cảnh báo nhẹ."
+    },
+    {
+      "id": "remix_tinh_te",
+      "ten": "Remix Tinh tế (Modern Fusion)",
+      "thu_tu_xet": 5,
+      "khi_taboo": false,
+      "khi_ao_lech": false,
+      "co_mon_hien_dai": true,
+      "diem_tu": 75,
+      "diem_duoi": null,
+      "dieu_kien": "Có món hiện đại và tổng điểm ≥ 75",
+      "mo_ta": "Kết hợp hài hòa giữa nét cổ phong và phong cách hiện đại đầy duyên dáng."
+    },
+    {
+      "id": "remix_chua_an_y",
+      "ten": "Remix Chưa ăn ý",
+      "thu_tu_xet": 6,
+      "khi_taboo": false,
+      "khi_ao_lech": false,
+      "co_mon_hien_dai": true,
+      "diem_tu": null,
+      "diem_duoi": 75,
+      "dieu_kien": "Có món hiện đại và tổng điểm < 75",
+      "mo_ta": "Có nỗ lực cách tân nhưng các món hiện đại và truyền thống chưa thực sự hòa quyện."
+    }
+  ]
+}

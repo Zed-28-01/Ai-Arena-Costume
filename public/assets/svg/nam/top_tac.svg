@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 800" width="100%" height="100%">
+  <!-- placeholder: Áo Tấc Nam (Tay thụng rộng trang trọng phom nam) -->
+  <g id="nam-top_tac" fill="currentColor" stroke="#333333" stroke-width="1.5" stroke-opacity="0.3">
+    <!-- Cổ áo lập lĩnh đứng -->
+    <path d="M184 142 Q200 138 216 142 L218 154 Q200 150 182 154 Z" fill="#FFFFFF" fill-opacity="0.9" />
+    <!-- Tay thụng rộng bên trái phom nam bề thế -->
+    <path d="M138 152 L65 220 L55 395 L120 435 L135 330 Z" />
+    <!-- Tay thụng rộng bên phải -->
+    <path d="M262 152 L335 220 L345 395 L280 435 L265 330 Z" />
+    <!-- Thân áo thụng dáng rộng, tà dài qua gối -->
+    <path d="M184 150 L138 152 L120 340 L105 540 L295 540 L280 340 L262 152 L216 150 Z" />
+    <!-- Đường khuy cài ngực phải -->
+    <path d="M200 152 Q218 172 228 205 L228 350" fill="none" stroke="#222222" stroke-width="2" stroke-opacity="0.4" />
+  </g>
+</svg>

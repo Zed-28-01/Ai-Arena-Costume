@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 800" width="100%" height="100%">
+  <!-- placeholder: Guốc mộc quai nhung (Truyền thống mộc mạc) -->
+  <g id="chung-shoe_guoc_moc">
+    <!-- Đế gỗ guốc trái -->
+    <path d="M154 750 Q170 748 186 750 L186 765 Q170 762 154 765 Z" fill="#D2B48C" stroke="#A88B68" stroke-width="1.5" />
+    <rect x="156" y="763" width="8" height="6" fill="#8C7355" />
+    <rect x="176" y="763" width="8" height="6" fill="#8C7355" />
+    <!-- Quai nhung đỏ guốc trái -->
+    <path d="M158 748 Q170 736 182 748" fill="none" stroke="#D22B2B" stroke-width="4.5" stroke-linecap="round" />
+
+    <!-- Đế gỗ guốc phải -->
+    <path d="M214 750 Q230 748 246 750 L246 765 Q230 762 214 765 Z" fill="#D2B48C" stroke="#A88B68" stroke-width="1.5" />
+    <rect x="216" y="763" width="8" height="6" fill="#8C7355" />
+    <rect x="236" y="763" width="8" height="6" fill="#8C7355" />
+    <!-- Quai nhung đỏ guốc phải -->
+    <path d="M218 748 Q230 736 242 748" fill="none" stroke="#D22B2B" stroke-width="4.5" stroke-linecap="round" />
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 800" width="100%" height="100%">
+  <!-- placeholder: Dép lê (Món hiện đại gây lỗi - buông tuồng bệt đất) -->
+  <g id="chung-shoe_dep_le" fill="#1A1A1A" stroke="#374151" stroke-width="1.5">
+    <!-- Đế dép trái -->
+    <ellipse cx="170" cy="762" rx="18" ry="6" fill="#111111" />
+    <!-- Quai ngang dép trái -->
+    <rect x="156" y="746" width="28" height="8" rx="3" fill="#1A1A1A" />
+
+    <!-- Đế dép phải -->
+    <ellipse cx="230" cy="762" rx="18" ry="6" fill="#111111" />
+    <!-- Quai ngang dép phải -->
+    <rect x="216" y="746" width="28" height="8" rx="3" fill="#1A1A1A" />
+  </g>
+</svg>

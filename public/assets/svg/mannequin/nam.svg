@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 800" width="100%" height="100%">
+  <!-- placeholder: Mannequin Nam -->
+  <g id="mannequin-nam" fill="#E2DAD2" stroke="#CCC2B8" stroke-width="2">
+    <!-- Đầu & Cổ -->
+    <ellipse cx="200" cy="85" rx="35" ry="43" />
+    <path d="M190 126 L190 148 L210 148 L210 126 Z" />
+    <!-- Thân nam: vai rộng, thẳng phom -->
+    <path d="M135 150 L115 175 L135 340 L145 430 L255 430 L265 340 L285 175 L265 150 Z" />
+    <!-- Tay trái -->
+    <path d="M120 170 Q95 250 105 340 L115 425 Q110 445 105 455 L118 460 Q128 445 130 425 L135 340 Z" />
+    <!-- Tay phải -->
+    <path d="M280 170 Q305 250 295 340 L285 425 Q290 445 295 455 L282 460 Q272 445 270 425 L265 340 Z" />
+    <!-- Chân trái -->
+    <path d="M148 430 Q145 560 155 660 L158 745 L182 745 L188 660 Q192 560 196 430 Z" />
+    <!-- Chân phải -->
+    <path d="M204 430 Q208 560 212 660 L218 745 L242 745 L245 660 Q255 560 252 430 Z" />
+    <!-- Bàn chân -->
+    <ellipse cx="170" cy="755" rx="16" ry="9" />
+    <ellipse cx="230" cy="755" rx="16" ry="9" />
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+{
+  "system_instruction": "[CHỜ BỔ SUNG]",
+  "rubric": {
+    "tot": "[CHỜ BỔ SUNG]",
+    "on": "[CHỜ BỔ SUNG]",
+    "chua": "[CHỜ BỔ SUNG]"
+  },
+  "fallback_feedback": {
+    "co_taboo": "[CHỜ BỔ SUNG]",
+    "co_mon_hien_dai": "[CHỜ BỔ SUNG]",
+    "chuan_le": "[CHỜ BỔ SUNG]"
+  }
+}

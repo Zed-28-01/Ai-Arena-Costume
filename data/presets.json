@@ -1,0 +1,62 @@
+[
+  {
+    "id": "PR_E1_chuan",
+    "su_kien": "E1",
+    "loai": "chuan",
+    "ten": "Cổ phong Chuẩn lễ Tốt nghiệp",
+    "mon": [
+      "top_tac:do_son",
+      "bot_lua_trang",
+      "head_khan_dong",
+      "shoe_guoc_moc"
+    ],
+    "y_nghia": "[CHỜ BỔ SUNG]",
+    "nhan_xet_da_duyet": "[CHỜ BỔ SUNG]",
+    "nguon_ids": []
+  },
+  {
+    "id": "PR_E1_remix",
+    "su_kien": "E1",
+    "loai": "remix",
+    "ten": "Kỷ yếu Thanh xuân Remix",
+    "mon": [
+      "top_tac:xanh_thien_thanh",
+      "bot_lua_trang",
+      "shoe_sneaker"
+    ],
+    "y_nghia": "[CHỜ BỔ SUNG]",
+    "nhan_xet_da_duyet": "[CHỜ BỔ SUNG]",
+    "nguon_ids": []
+  },
+  {
+    "id": "PR_E2_chuan",
+    "su_kien": "E2",
+    "loai": "chuan",
+    "ten": "Du xuân Cổ phong Nguyên bản",
+    "mon": [
+      "top_ngu_than:xanh_luc",
+      "bot_lua_trang",
+      "acc_quat_giay",
+      "shoe_guoc_moc"
+    ],
+    "y_nghia": "[CHỜ BỔ SUNG]",
+    "nhan_xet_da_duyet": "[CHỜ BỔ SUNG]",
+    "nguon_ids": []
+  },
+  {
+    "id": "PR_E2_remix",
+    "su_kien": "E2",
+    "loai": "remix",
+    "ten": "Du xuân Phố thị Hiện đại Remix",
+    "mon": [
+      "top_ngu_than:hong_phan",
+      "bot_tay_au",
+      "shoe_sneaker",
+      "head_bang_do",
+      "acc_tui_coi"
+    ],
+    "y_nghia": "[CHỜ BỔ SUNG]",
+    "nhan_xet_da_duyet": "[CHỜ BỔ SUNG]",
+    "nguon_ids": []
+  }
+]

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 800" width="100%" height="100%">
+  <!-- placeholder: Quần short Nam (Món hiện đại gây lỗi - ống ngắn lộ chân) -->
+  <g id="nam-bot_short" fill="#F5F5DC" stroke="#D4D4D8" stroke-width="2">
+    <!-- Quần short nam ngang đùi -->
+    <path d="M142 380 L140 430 L134 495 L188 495 L200 440 L204 440 L216 495 L268 495 L262 430 L260 380 Z" />
+    <!-- Đường may và túi quần -->
+    <path d="M145 400 L165 440" fill="none" stroke="#A1A1AA" stroke-width="1.5" />
+    <path d="M257 400 L237 440" fill="none" stroke="#A1A1AA" stroke-width="1.5" />
+  </g>
+</svg>

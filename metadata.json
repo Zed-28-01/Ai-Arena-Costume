@@ -1,0 +1,6 @@
+{
+  "name": "Việt phục Remix",
+  "description": "POC phối trang phục Việt phục truyền thống kết hợp hiện đại cho AI Arena",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 800" width="100%" height="100%">
+  <!-- placeholder: Quần lụa trắng Nam (Ống rộng truyền thống phom nam) -->
+  <g id="nam-bot_lua_trang" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1.5">
+    <!-- Cạp quần và ống suông rộng -->
+    <path d="M140 380 L138 430 L132 600 L128 730 L190 730 L200 500 L204 500 L214 730 L276 730 L270 600 L266 430 L264 380 Z" />
+    <!-- Nếp gấp lụa -->
+    <path d="M160 460 L158 720" fill="none" stroke="#E5E7EB" stroke-width="1.5" />
+    <path d="M242 460 L244 720" fill="none" stroke="#E5E7EB" stroke-width="1.5" />
+  </g>
+</svg>

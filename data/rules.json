@@ -1,0 +1,47 @@
+[
+  {
+    "id": "R01",
+    "loai": "taboo",
+    "dieu_kien": {
+      "co": ["bot_short"],
+      "va_mot_trong": ["top_tac", "top_ngu_than"]
+    },
+    "tieu_de": "Cảnh báo văn hóa nghiêm trọng",
+    "ly_do": "Quần short phối cùng Áo Tấc hoặc Áo Ngũ Thân phá vỡ hoàn toàn tỷ lệ và sự tôn nghiêm truyền thống của cổ phục Việt.",
+    "da_duyet": false,
+    "nguon_ids": []
+  },
+  {
+    "id": "R02",
+    "loai": "taboo",
+    "dieu_kien": {
+      "co": ["shoe_dep_le", "top_tac"]
+    },
+    "tieu_de": "Cảnh báo văn hóa nghiêm trọng",
+    "ly_do": "Áo Tấc là lễ phục đại triều/hội trang trọng bậc nhất, việc phối cùng dép lê thể hiện sự buông tuồng, bất kính với nghi lễ.",
+    "da_duyet": false,
+    "nguon_ids": []
+  },
+  {
+    "id": "R03",
+    "loai": "warn",
+    "dieu_kien": {
+      "co": ["shoe_dep_le", "top_ngu_than"]
+    },
+    "tieu_de": "Cảnh báo hòa hợp",
+    "ly_do": "Áo Ngũ Thân dù là thường phục nhưng vẫn đòi hỏi tính chỉn chu nề nếp; dép lê làm giảm đáng kể giá trị thẩm mỹ của trang phục.",
+    "da_duyet": false,
+    "nguon_ids": []
+  },
+  {
+    "id": "R04",
+    "loai": "note",
+    "dieu_kien": {
+      "co": ["shoe_sneaker", "top_tac"]
+    },
+    "tieu_de": "Lưu ý tinh tế",
+    "ly_do": "Khi phối sneaker trẻ trung với Áo Tấc, nên giữ phom dáng áo và quần nguyên bản, tạo điểm nhấn năng động nhưng vẫn giữ cốt cách trang phục.",
+    "da_duyet": false,
+    "nguon_ids": []
+  }
+]

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 800" width="100%" height="100%">
+  <!-- placeholder: Sneaker trắng cổ thấp (Hiện đại trẻ trung) -->
+  <g id="chung-shoe_sneaker" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.5">
+    <!-- Giày trái -->
+    <path d="M152 748 Q158 732 172 732 Q186 734 188 748 L190 766 L150 766 Z" />
+    <path d="M150 762 L190 762" stroke="#6B7280" stroke-width="2" />
+    <!-- Dây giày trái -->
+    <line x1="164" y1="740" x2="176" y2="740" stroke="#6B7280" stroke-width="1.5" />
+    <line x1="166" y1="746" x2="174" y2="746" stroke="#6B7280" stroke-width="1.5" />
+
+    <!-- Giày phải -->
+    <path d="M212 748 Q214 734 228 732 Q242 732 248 748 L250 766 L210 766 Z" />
+    <path d="M210 762 L250 762" stroke="#6B7280" stroke-width="2" />
+    <!-- Dây giày phải -->
+    <line x1="224" y1="740" x2="236" y2="740" stroke="#6B7280" stroke-width="1.5" />
+    <line x1="226" y1="746" x2="234" y2="746" stroke="#6B7280" stroke-width="1.5" />
+  </g>
+</svg>

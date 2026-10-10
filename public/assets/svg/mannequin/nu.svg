@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 800" width="100%" height="100%">
+  <!-- placeholder: Mannequin Nữ -->
+  <g id="mannequin-nu" fill="#E8DFD8" stroke="#D1C7C0" stroke-width="2">
+    <!-- Đầu & Cổ -->
+    <ellipse cx="200" cy="85" rx="32" ry="40" />
+    <path d="M192 124 L192 148 L208 148 L208 124 Z" />
+    <!-- Thân nữ: thon eo, vai mềm -->
+    <path d="M145 150 Q120 180 130 260 Q135 320 155 350 Q145 390 148 430 L252 430 Q255 390 245 350 Q265 320 270 260 Q280 180 255 150 Z" />
+    <!-- Tay trái -->
+    <path d="M130 160 Q105 240 115 340 L125 420 Q120 440 115 450 L125 455 Q135 440 138 420 L145 340 Z" />
+    <!-- Tay phải -->
+    <path d="M270 160 Q295 240 285 340 L275 420 Q280 440 285 450 L275 455 Q265 440 262 420 L255 340 Z" />
+    <!-- Chân trái -->
+    <path d="M152 430 Q150 560 160 660 L162 745 L180 745 L186 660 Q192 560 196 430 Z" />
+    <!-- Chân phải -->
+    <path d="M204 430 Q208 560 214 660 L220 745 L238 745 L240 660 Q250 560 248 430 Z" />
+    <!-- Bàn chân -->
+    <ellipse cx="170" cy="755" rx="14" ry="8" />
+    <ellipse cx="230" cy="755" rx="14" ry="8" />
+  </g>
+</svg>

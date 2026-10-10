@@ -1,0 +1,62 @@
+[
+  {
+    "id": "do_son",
+    "ten": "Đỏ son",
+    "hex": "#B22222",
+    "nhom": "truyen_thong"
+  },
+  {
+    "id": "xanh_luc",
+    "ten": "Xanh lục",
+    "hex": "#2E8B57",
+    "nhom": "truyen_thong"
+  },
+  {
+    "id": "hong_phan",
+    "ten": "Hồng phấn",
+    "hex": "#FFB6C1",
+    "nhom": "hien_dai"
+  },
+  {
+    "id": "xanh_thien_thanh",
+    "ten": "Xanh thiên thanh",
+    "hex": "#87CEEB",
+    "nhom": "hien_dai"
+  },
+  {
+    "id": "trang",
+    "ten": "Trắng",
+    "hex": "#FFFFFF",
+    "nhom": "truyen_thong"
+  },
+  {
+    "id": "den",
+    "ten": "Đen",
+    "hex": "#1A1A1A",
+    "nhom": "truyen_thong"
+  },
+  {
+    "id": "be",
+    "ten": "Be",
+    "hex": "#F5F5DC",
+    "nhom": "hien_dai"
+  },
+  {
+    "id": "do",
+    "ten": "Đỏ",
+    "hex": "#D22B2B",
+    "nhom": "truyen_thong"
+  },
+  {
+    "id": "nau_giay",
+    "ten": "Nâu giấy",
+    "hex": "#D2B48C",
+    "nhom": "truyen_thong"
+  },
+  {
+    "id": "trang_nga",
+    "ten": "Trắng ngà",
+    "hex": "#FFFFF0",
+    "nhom": "hien_dai"
+  }
+]

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 800" width="100%" height="100%">
+  <!-- placeholder: Áo Ngũ Thân Nam (Tay chẽn bó gọn phom nam) -->
+  <g id="nam-top_ngu_than" fill="currentColor" stroke="#333333" stroke-width="1.5" stroke-opacity="0.3">
+    <!-- Cổ áo lập lĩnh đứng -->
+    <path d="M185 142 Q200 138 215 142 L217 153 Q200 149 183 153 Z" fill="#FFFFFF" fill-opacity="0.9" />
+    <!-- Tay chẽn bên trái ôm sát tay phom nam -->
+    <path d="M136 153 L100 240 L108 350 L118 430 L132 425 L138 330 Z" />
+    <!-- Tay chẽn bên phải -->
+    <path d="M264 153 L300 240 L292 350 L282 430 L268 425 L262 330 Z" />
+    <!-- Thân áo ngũ thân tay chẽn dáng đứng, tà qua đùi -->
+    <path d="M185 150 L136 153 L126 320 L120 490 L280 490 L274 320 L264 153 L215 150 Z" />
+    <!-- Hàng khuy cài ngực phải -->
+    <path d="M200 152 Q220 178 226 215 L226 340" fill="none" stroke="#222222" stroke-width="2" stroke-opacity="0.4" />
+  </g>
+</svg>

@@ -1,0 +1,10 @@
+{
+  "report_form_url": "[CHỜ BỔ SUNG]",
+  "gemini_timeout_ms": 8000,
+  "nhan_minh_bach": {
+    "ai_review": "Nhận định do AI viết dựa trên dữ liệu đã duyệt",
+    "poc_disclaimer": "Dữ liệu minh họa POC, cần thẩm định"
+  },
+  "tang_bat_buoc": ["ao", "quan", "giay"],
+  "tang_tuy_chon": ["doi_dau", "phu_kien"]
+}

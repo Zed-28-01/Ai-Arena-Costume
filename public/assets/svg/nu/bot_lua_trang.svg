@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 800" width="100%" height="100%">
+  <!-- placeholder: Quần lụa trắng Nữ (Ống suông rộng truyền thống) -->
+  <g id="nu-bot_lua_trang" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1.5">
+    <!-- Cạp quần và ống suông rộng rủ mềm -->
+    <path d="M142 380 L140 430 L135 600 L130 730 L188 730 L198 500 L202 500 L212 730 L270 730 L265 600 L260 430 L258 380 Z" />
+    <!-- Nếp gấp lụa tự nhiên -->
+    <path d="M162 460 L160 720" fill="none" stroke="#E5E7EB" stroke-width="1.5" />
+    <path d="M238 460 L240 720" fill="none" stroke="#E5E7EB" stroke-width="1.5" />
+  </g>
+</svg>

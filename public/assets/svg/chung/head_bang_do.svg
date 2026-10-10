@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 800" width="100%" height="100%">
+  <!-- placeholder: Băng đô ngọc trai bản to (Hiện đại nữ tính) -->
+  <g id="chung-head_bang_do" stroke="#E5E7EB" stroke-width="1.5">
+    <!-- Vành băng đô cung tròn ôm vòm đầu -->
+    <path d="M166 82 C164 50, 236 50, 234 82" fill="none" stroke="#FFFFF0" stroke-width="12" stroke-linecap="round" />
+    <!-- Các hạt ngọc trai đính trên băng đô -->
+    <circle cx="172" cy="72" r="5" fill="#FFFFFF" />
+    <circle cx="182" cy="58" r="6" fill="#FFFFFF" />
+    <circle cx="200" cy="52" r="7" fill="#FFFFFF" />
+    <circle cx="218" cy="58" r="6" fill="#FFFFFF" />
+    <circle cx="228" cy="72" r="5" fill="#FFFFFF" />
+  </g>
+</svg>
